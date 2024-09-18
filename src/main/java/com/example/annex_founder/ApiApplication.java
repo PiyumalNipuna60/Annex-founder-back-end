@@ -1,13 +1,13 @@
-package com.example.Annex_founder;
+package com.example.annex_founder;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AnnexFounderApplication {
+public class ApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AnnexFounderApplication.class, args);
+		SpringApplication.run(ApiApplication.class, args);
 	}
 
 }
