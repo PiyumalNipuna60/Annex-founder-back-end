@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface AdminRepo extends JpaRepository<Admins, Long> {
     List<Admins> findByUserName(String username);
+
+    Admins findUserByEmailAndUserName(String email, String userName);
+
+    Admins findUserByAdminId(Long adminId);
 }
