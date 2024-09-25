@@ -15,7 +15,7 @@ import java.util.Map;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/api/admin")
 public class AdminController {
 
     private final AdminService adminService;
@@ -50,8 +50,8 @@ public class AdminController {
         if (adminDto == null) {
             response.put("massage", "wrong details");
         } else {
-            // String token = this.jwtTokenGenerator.generateJwtToken(user);
-            //response.put("token", token);
+             String token = this.jwtTokenGenerator.generateJwtToken(adminDto);
+            response.put("token", token);
         }
         return response;
     }
@@ -76,11 +76,21 @@ public class AdminController {
         }
     }
 
-    @PostMapping("/get_user_info_by_token")
+    @GetMapping("/get_user_info_by_token")
     public ResponseEntity<Object> getAdminInfoByToken(@RequestHeader(name = "Authorization") String authorizationHeader) {
         if (this.jwtTokenGenerator.validateJwtToken(authorizationHeader)) {
             AdminDtoGet userFromJwtToken = this.jwtTokenGenerator.getAdminFromJwtToken(authorizationHeader);
             return new ResponseEntity<>(userFromJwtToken, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(TokenStatus.TOKEN_INVALID, HttpStatus.UNAUTHORIZED);
+        }
+    }
+
+    @DeleteMapping("/{adminId}")
+    public ResponseEntity<Object> deleteAdmin(@PathVariable Long adminId, @RequestHeader(name = "Authorization") String authorizationHeader) {
+        if (this.jwtTokenGenerator.validateJwtToken(authorizationHeader)) {
+            AdminDto dto = this.adminService.deleteAdmin(adminId);
+            return new ResponseEntity<>(dto, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(TokenStatus.TOKEN_INVALID, HttpStatus.UNAUTHORIZED);
         }

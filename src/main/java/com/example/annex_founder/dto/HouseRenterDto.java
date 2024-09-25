@@ -1,6 +1,6 @@
-package com.example.annex_founder.model;
+package com.example.annex_founder.dto;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,14 +10,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Data
-@Entity
-@Table(name = "Admins")
-public class Admins {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long adminId;
+public class HouseRenterDto {
+    private Long renterId;
+    private String name;
     private String email;
     private String contact;
-    private String userName;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 }

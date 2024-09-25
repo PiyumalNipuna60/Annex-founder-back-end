@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -79,6 +80,17 @@ public class AdminServiceImpl implements AdminService {
     public AdminDtoGet getAdminById(String id) {
         Admins byId = adminRepo.findUserByAdminId(Long.valueOf(id));
         return entityToAdminDtoGet(byId);
+    }
+
+    @Override
+    public AdminDto deleteAdmin(Long adminId) {
+        Optional<Admins> byId = adminRepo.findById(adminId);
+        if (byId.isPresent()){
+            adminRepo.deleteById(adminId);
+            return entityToDto(byId.get());
+        }else {
+            return null;
+        }
     }
 
 

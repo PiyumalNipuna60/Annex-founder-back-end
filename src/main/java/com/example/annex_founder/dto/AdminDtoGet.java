@@ -13,6 +13,7 @@ import lombok.ToString;
 public class AdminDtoGet {
     private Long adminId;
     private String email;
+    private String contact;
     private String userName;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
