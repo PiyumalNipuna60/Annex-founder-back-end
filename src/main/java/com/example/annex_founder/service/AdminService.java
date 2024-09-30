@@ -19,4 +19,6 @@ public interface AdminService {
     List<AdminDtoGet> getAllAdmin();
 
     AdminDtoGet getAdminById(String id);
+
+    AdminDto deleteAdmin(Long adminId);
 }
