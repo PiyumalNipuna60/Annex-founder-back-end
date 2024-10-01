@@ -1,7 +1,7 @@
 package com.example.annex_founder.service;
 
 import com.example.annex_founder.dto.AdminDto;
-import com.example.annex_founder.dto.AdminDtoGet;
+import com.example.annex_founder.dto.get.AdminDtoGet;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

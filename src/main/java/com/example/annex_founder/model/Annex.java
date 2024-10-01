@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -30,4 +32,7 @@ public class Annex {
     @ManyToOne(optional = false)
     @JoinColumn(name = "houseRenterId")
     private HouseRenter houseRenter;
+
+    @OneToMany(mappedBy = "annex", cascade = CascadeType.ALL)
+    private List<Review> reviewList;
 }
