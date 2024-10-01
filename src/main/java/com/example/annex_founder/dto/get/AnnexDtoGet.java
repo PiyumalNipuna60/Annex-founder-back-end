@@ -1,5 +1,6 @@
-package com.example.annex_founder.dto;
+package com.example.annex_founder.dto.get;
 
+import com.example.annex_founder.dto.HouseRenterDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

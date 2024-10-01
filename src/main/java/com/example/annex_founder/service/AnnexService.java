@@ -1,7 +1,7 @@
 package com.example.annex_founder.service;
 
 import com.example.annex_founder.dto.AnnexDto;
-import com.example.annex_founder.dto.AnnexDtoGet;
+import com.example.annex_founder.dto.get.AnnexDtoGet;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
 package com.example.annex_founder.controller;
 
-import com.example.annex_founder.dto.AnnexDto;
-import com.example.annex_founder.dto.get.AnnexDtoGet;
-import com.example.annex_founder.service.AnnexService;
+import com.example.annex_founder.dto.ReviewDto;
+import com.example.annex_founder.dto.get.ReviewDtoGet;
+import com.example.annex_founder.service.ReviewService;
 import com.example.annex_founder.util.JWTTokenGenerator;
 import com.example.annex_founder.util.TokenStatus;
 import org.springframework.http.HttpStatus;
@@ -13,61 +13,61 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/annex")
-public class AnnexController {
-    private final AnnexService annexService;
-    private final JWTTokenGenerator jwtTokenGenerator;
+@RequestMapping("/api/reviews")
+public class ReviewController {
 
-    public AnnexController(AnnexService annexService, JWTTokenGenerator jwtTokenGenerator) {
-        this.annexService = annexService;
+    private final JWTTokenGenerator jwtTokenGenerator;
+    private final ReviewService reviewService;
+
+    public ReviewController(JWTTokenGenerator jwtTokenGenerator, ReviewService reviewService) {
         this.jwtTokenGenerator = jwtTokenGenerator;
+        this.reviewService = reviewService;
     }
 
-
     @PostMapping
-    public ResponseEntity<Object> saveAnnex(@RequestBody AnnexDto annexDto, @RequestHeader(name = "Authorization") String authorizationHeader) {
+    public ResponseEntity<Object> saveReviews(@RequestBody ReviewDto reviewDto, @RequestHeader(name = "Authorization") String authorizationHeader) {
         if (this.jwtTokenGenerator.validateJwtToken(authorizationHeader)) {
-                AnnexDto dto = this.annexService.saveAnnex(annexDto);
-                return new ResponseEntity<>(dto, HttpStatus.CREATED);
-        } else {
+            ReviewDto dto = this.reviewService.saveHouseRenter(reviewDto);
+            return new ResponseEntity<>(dto, HttpStatus.CREATED);
+        }else {
             return new ResponseEntity<>(TokenStatus.TOKEN_INVALID, HttpStatus.UNAUTHORIZED);
         }
     }
 
     @GetMapping
-    public ResponseEntity<Object> getAllAnnex(@RequestHeader(name = "Authorization") String authorizationHeader) {
+    public ResponseEntity<Object> getAllReviews(@RequestHeader(name = "Authorization") String authorizationHeader) {
         if (this.jwtTokenGenerator.validateJwtToken(authorizationHeader)) {
-            List<AnnexDtoGet> dtoList = this.annexService.getAllAnnex();
+            List<ReviewDtoGet> dtoList = this.reviewService.getAllHouseRenter();
             return new ResponseEntity<>(dtoList, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(TokenStatus.TOKEN_INVALID, HttpStatus.UNAUTHORIZED);
         }
     }
 
-    @GetMapping("/{annexId}")
-    public ResponseEntity<Object> searchAnnex(@PathVariable Long annexId, @RequestHeader(name = "Authorization") String authorizationHeader) {
+    @GetMapping("/{reviewId}")
+    public ResponseEntity<Object> searchReviews(@PathVariable Long reviewId, @RequestHeader(name = "Authorization") String authorizationHeader) {
         if (this.jwtTokenGenerator.validateJwtToken(authorizationHeader)) {
-            AnnexDtoGet dto = this.annexService.searchAnnex(annexId);
+            ReviewDtoGet dto = this.reviewService.searchHouseRenter(reviewId);
             return new ResponseEntity<>(dto, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(TokenStatus.TOKEN_INVALID, HttpStatus.UNAUTHORIZED);
         }
     }
 
-    @PutMapping("/{annexId}")
-    public ResponseEntity<Object> updateAnnex(@PathVariable Long annexId, @RequestBody AnnexDto annexDto, @RequestHeader(name = "Authorization") String authorizationHeader) {
+    @PutMapping("/{reviewId}")
+    public ResponseEntity<Object> updateReviews(@PathVariable Long reviewId, @RequestBody ReviewDto reviewDto, @RequestHeader(name = "Authorization") String authorizationHeader) {
         if (this.jwtTokenGenerator.validateJwtToken(authorizationHeader)) {
-            AnnexDto dto = this.annexService.updateAnnex(annexId, annexDto);
+            ReviewDto dto = this.reviewService.updateHouseRenter(reviewId, reviewDto);
             return new ResponseEntity<>(dto, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(TokenStatus.TOKEN_INVALID, HttpStatus.UNAUTHORIZED);
         }
     }
 
-    @DeleteMapping("/{annexId}")
-    public ResponseEntity<Object> deleteAnnex(@PathVariable Long annexId, @RequestHeader(name = "Authorization") String authorizationHeader) {
+    @DeleteMapping("/{reviewId}")
+    public ResponseEntity<Object> deleteReviews(@PathVariable Long reviewId, @RequestHeader(name = "Authorization") String authorizationHeader) {
         if (this.jwtTokenGenerator.validateJwtToken(authorizationHeader)) {
-            AnnexDto dto = this.annexService.deleteAnnex(annexId);
+            ReviewDto dto = this.reviewService.deleteHouseRenter(reviewId);
             return new ResponseEntity<>(dto, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(TokenStatus.TOKEN_INVALID, HttpStatus.UNAUTHORIZED);
