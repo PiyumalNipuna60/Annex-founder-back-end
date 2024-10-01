@@ -1,4 +1,4 @@
-package com.example.annex_founder.dto;
+package com.example.annex_founder.dto.get;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

@@ -1,7 +1,7 @@
 package com.example.annex_founder.service.impl;
 
 import com.example.annex_founder.dto.AnnexDto;
-import com.example.annex_founder.dto.AnnexDtoGet;
+import com.example.annex_founder.dto.get.AnnexDtoGet;
 import com.example.annex_founder.dto.HouseRenterDto;
 import com.example.annex_founder.model.Annex;
 import com.example.annex_founder.model.HouseRenter;

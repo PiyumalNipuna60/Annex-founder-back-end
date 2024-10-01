@@ -1,7 +1,7 @@
 package com.example.annex_founder.util;
 
 import com.example.annex_founder.dto.AdminDto;
-import com.example.annex_founder.dto.AdminDtoGet;
+import com.example.annex_founder.dto.get.AdminDtoGet;
 import com.example.annex_founder.service.AdminService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

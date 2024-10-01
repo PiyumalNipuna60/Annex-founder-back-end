@@ -1,7 +1,7 @@
 package com.example.annex_founder.controller;
 
 import com.example.annex_founder.dto.AdminDto;
-import com.example.annex_founder.dto.AdminDtoGet;
+import com.example.annex_founder.dto.get.AdminDtoGet;
 import com.example.annex_founder.service.AdminService;
 import com.example.annex_founder.util.JWTTokenGenerator;
 import com.example.annex_founder.util.TokenStatus;
