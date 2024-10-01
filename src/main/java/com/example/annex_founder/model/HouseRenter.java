@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -23,4 +25,11 @@ public class HouseRenter {
     private String email;
     private String contact;
     private String password;
+
+    @OneToMany(mappedBy = "houseRenter", cascade = CascadeType.ALL)
+    private List<Annex> annexList;
+
+    public HouseRenter(Long renterId) {
+        this.renterId=renterId;
+    }
 }
