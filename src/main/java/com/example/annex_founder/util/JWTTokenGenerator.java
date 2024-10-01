@@ -1,6 +1,7 @@
 package com.example.annex_founder.util;
 
 import com.example.annex_founder.dto.AdminDto;
+import com.example.annex_founder.dto.CustomerDto;
 import com.example.annex_founder.dto.get.AdminDtoGet;
 import com.example.annex_founder.service.AdminService;
 import io.jsonwebtoken.Jwts;
@@ -34,6 +35,16 @@ public class JWTTokenGenerator {
         return Jwts.builder()
                 .setId(String.valueOf(adminDto.getAdminId()))
                 .setSubject((adminDto.getUserName()))
+                .setIssuedAt(new Date())
+                .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
+                .signWith(key(), SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+    public String generateJwtTokenForCustomer(CustomerDto customerDto) {
+        return Jwts.builder()
+                .setId(String.valueOf(customerDto.getCustomerId()))
+                .setSubject((customerDto.getUserName()))
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
                 .signWith(key(), SignatureAlgorithm.HS256)
