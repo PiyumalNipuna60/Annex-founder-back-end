@@ -5,6 +5,7 @@ import com.example.annex_founder.dto.get.ReviewDtoGet;
 import com.example.annex_founder.service.ReviewService;
 import com.example.annex_founder.util.JWTTokenGenerator;
 import com.example.annex_founder.util.TokenStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ public class ReviewController {
     private final JWTTokenGenerator jwtTokenGenerator;
     private final ReviewService reviewService;
 
+    @Autowired
     public ReviewController(JWTTokenGenerator jwtTokenGenerator, ReviewService reviewService) {
         this.jwtTokenGenerator = jwtTokenGenerator;
         this.reviewService = reviewService;

@@ -5,6 +5,7 @@ import com.example.annex_founder.dto.get.AnnexDtoGet;
 import com.example.annex_founder.service.AnnexService;
 import com.example.annex_founder.util.JWTTokenGenerator;
 import com.example.annex_founder.util.TokenStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ public class AnnexController {
     private final AnnexService annexService;
     private final JWTTokenGenerator jwtTokenGenerator;
 
+    @Autowired
     public AnnexController(AnnexService annexService, JWTTokenGenerator jwtTokenGenerator) {
         this.annexService = annexService;
         this.jwtTokenGenerator = jwtTokenGenerator;
