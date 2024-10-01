@@ -21,4 +21,8 @@ public class Review {
     @ManyToOne(optional = false)
     @JoinColumn(name = "annexId")
     private Annex annex;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "customerId")
+   private Customer customer;
 }

@@ -10,6 +10,7 @@ import com.example.annex_founder.model.Review;
 import com.example.annex_founder.repo.ReviewRepo;
 import com.example.annex_founder.service.ReviewService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class ReviewServiceImpl implements ReviewService {
     private final ReviewRepo reviewRepo;
     private final ModelMapper modelMapper;
 
+    @Autowired
     public ReviewServiceImpl(ReviewRepo reviewRepo, ModelMapper modelMapper) {
         this.reviewRepo = reviewRepo;
         this.modelMapper = modelMapper;

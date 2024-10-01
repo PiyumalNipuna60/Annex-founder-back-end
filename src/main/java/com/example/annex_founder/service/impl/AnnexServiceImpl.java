@@ -8,6 +8,7 @@ import com.example.annex_founder.model.HouseRenter;
 import com.example.annex_founder.repo.AnnexRepo;
 import com.example.annex_founder.service.AnnexService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class AnnexServiceImpl implements AnnexService {
     private final AnnexRepo annexRepo;
     private final ModelMapper modelMapper;
 
+    @Autowired
     public AnnexServiceImpl(AnnexRepo annexRepo, ModelMapper modelMapper) {
         this.annexRepo = annexRepo;
         this.modelMapper = modelMapper;
